@@ -1,45 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Locatienet Leaflet SearchAddress Demo</title>
-    <style>
-        body, html { height: 100%; margin: 0; } #map { height: 100%; width: 100%; }
-    </style>
-    
+    <title>Locatienet API Documentation</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <div id="map"></div>
-    <script src="dev-api-key.js"></script>
+<h1>Welcome to the Locatienet API Documentation</h1>
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<p>Welcome to the official documentation for the <strong>Locatienet API</strong>. Here you'll find detailed references, usage examples, and guides to help you integrate Locatienet services into your applications.</p>
 
-    <!-- Locatienet Leaflet SearchAddress  -->
-    <link rel="stylesheet" href="https://unpkg.com/@locatienet/leaflet-searchaddress/dist/leaflet-searchaddress.css" />
-    <script src="https://unpkg.com/@locatienet/leaflet-searchaddress/dist/leaflet-searchaddress.js?apikey=aa101d91-bc54-4c68-b0ea-12dbfe116bf6"></script>
-    
-    <script src="https://unpkg.com/@locatienet/leaflet-tilelayer/dist/leaflet-tilelayer.js?apikey=aa101d91-bc54-4c68-b0ea-12dbfe116bf6"></script>
-    
-    <script>
-        const map = L.map('map').setView([52.1, 5.1], 7);
-        L.locatienetTileLayer().addTo(map);
-
-        // Add Locatienet Leaflet SearchAddress control
-        const searchAddress = new L.SearchAddress.Control().addTo(map);
+<h2>Getting Started</h2>
+<p>Our API allows you to:</p>
+<ul>
+    <li>Geocode addresses and locations across the Netherlands.</li>
+    <li>Calculate routes and distances for multiple locations.</li>
+    <li>Optimize routing based on vehicle type, time, and other constraints.</li>
+    <li>Access detailed information about locations, streets, and administrative areas.</li>
+</ul>
 
 
-        // Listen to SearchAddress event address selected
-        const featureGroup = L.featureGroup().addTo(map)
-		searchAddress.on('address', (e) => {
-            featureGroup.clearLayers();
-            L.geoJSON(e.address).bindPopup(function (layer) {
-                return layer.feature.properties.description;
-            }).addTo(featureGroup);
-            map.flyToBounds(featureGroup.getBounds(), { maxZoom: 12, animate: true, duration: 3, easeLinearity: 1, })
+<h1>Documentation</h1>
+<div class="list-group">
+    <a href="./locatienet-js-docs/" class="list-group-item list-group-item-action">Locatienet-js Documentation</a></li>
+</div>
 
-        });
-    </script>
+<h1>Examples</h1>
+
 </body>
 </html>
 
